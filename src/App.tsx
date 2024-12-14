@@ -5,6 +5,7 @@ import { CallToActionProps } from "./types/CallToAction.types";
 import { useSelector } from "react-redux";
 import { RootState } from "./redux/store";
 import LanguageSwitcher from "./components/LanguageSwitcher";
+import Header from "./sections/Header";
 
 function App() {
   const themeState = useSelector((state: RootState) => state.theme);
@@ -20,6 +21,7 @@ function App() {
   return (
     <ThemeProvider theme={themeState.theme}>
       <Global styles={GlobalStyles} />
+      <Header />
       <h1>Hello, World!</h1>
       <LanguageSwitcher />
       <CallToAction {...callToActionProps} />

@@ -1,4 +1,7 @@
 {
   "greeting": "Hola",
-  "changeLanguage": "Cambiar idioma"
+  "changeLanguage": "Cambiar idioma",
+  "home": "Home",
+  "about": "Sobre",
+  "contact": "Contactar"
 }

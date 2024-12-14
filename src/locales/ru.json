@@ -1,4 +1,7 @@
 {
   "greeting": "Priviet",
-  "changeLanguage": "Idiomen Versprochen"
+  "changeLanguage": "Idiomen Versprochen",
+  "home": "Home",
+  "about": "About",
+  "contact": "Contact"
 }
