@@ -13,6 +13,7 @@ function App() {
     title: "Buy this now",
     path: "/",
     color: themeState.theme.colors.primary.dark,
+    backgroundColor: themeState.theme.colors.primary.light,
     subtitle: "limited offer",
   };
 

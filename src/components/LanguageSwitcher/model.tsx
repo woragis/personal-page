@@ -5,6 +5,13 @@ export const useLanguageSwitcherModel = () => {
   const changeLanguage = (lang: string) => {
     i18n.changeLanguage(lang);
   };
+  const languages = [
+    { code: "en", label: "English" },
+    { code: "es", label: "Espanhol" },
+    { code: "pt", label: "Portugues" },
+    { code: "de", label: "Deutsch" },
+    { code: "ru", label: "Rusky" },
+  ];
 
-  return { t, changeLanguage };
+  return { t, changeLanguage, languages };
 };

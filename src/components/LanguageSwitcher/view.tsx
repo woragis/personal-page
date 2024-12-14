@@ -3,16 +3,17 @@ import { useLanguageSwitcherModel } from "./model";
 export const LanguageSwitcherView = ({
   t,
   changeLanguage,
+  languages,
 }: ReturnType<typeof useLanguageSwitcherModel>) => {
+  const languagesComponent = languages.map(({ code, label }) => {
+    return <button onClick={() => changeLanguage(code)}>{label}</button>;
+  });
+
   return (
     <div>
       <p>{t("greeting")}</p>
-      <button onClick={() => changeLanguage("en")}>
-        {t("changeLanguage")} to English
-      </button>
-      <button onClick={() => changeLanguage("es")}>
-        {t("changeLanguage")} to Espanol
-      </button>
+      <p>{t("changeLanguage")}</p>
+      {languagesComponent}
     </div>
   );
 };
