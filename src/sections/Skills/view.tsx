@@ -1,6 +1,8 @@
 import { useSkillsModel } from "./model";
 import {
-  Skill,
+  CardBackFace,
+  CardFrontFace,
+  SkillCard,
   SkillData,
   SkillIcon,
   SkillProficiency,
@@ -14,21 +16,25 @@ export const SkillsView = ({ skills }: ReturnType<typeof useSkillsModel>) => {
   const skillsComponent = skills.map(
     ({ title, icon, text, proficiencyLevel }) => {
       return (
-        <Skill width="330px" height="350px">
-          <SkillIcon
-            size="60px"
-            color="white"
-            backgroundColor="black"
-            fontSize="38px"
-          >
-            {icon}
-          </SkillIcon>
-          <SkillTitle>{title}</SkillTitle>
-          <SkillData>
-            <SkillText>{text}</SkillText>
-          </SkillData>
-          <SkillProficiency>{proficiencyLevel} %</SkillProficiency>
-        </Skill>
+        <SkillCard width="330px" height="350px">
+          <CardFrontFace>
+            <SkillIcon
+              size="60px"
+              color="white"
+              backgroundColor="black"
+              fontSize="38px"
+            >
+              {icon}
+            </SkillIcon>
+            <SkillTitle>{title}</SkillTitle>
+          </CardFrontFace>
+          <CardBackFace>
+            <SkillData>
+              <SkillText>{text}</SkillText>
+            </SkillData>
+            <SkillProficiency>{proficiencyLevel} %</SkillProficiency>
+          </CardBackFace>
+        </SkillCard>
       );
     }
   );

@@ -2,15 +2,6 @@ import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
 
 export const SkillSectionContainer = styled.section`
-  /*
-  display: grid;
-  height: 350px;
-  justify-items: center;
-  align-content: center;
-  overflow-x: scroll;
-  grid-template-columns: repeat(9, 350px);
-  */
-  max-width: 600px;
   overflow: hidden;
   mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
   -webkit-mask: linear-gradient(
@@ -20,6 +11,10 @@ export const SkillSectionContainer = styled.section`
     white 80%,
     transparent
   );
+
+  width: 100%;
+  border: 1px solid red;
+  height: 500px;
 `;
 
 const scrollSkills = keyframes({
@@ -34,14 +29,14 @@ export const SkillScrollWrapper = styled.section`
   flex-wrap: nowrap;
   gap: 1rem;
   width: max-content;
-  animation: ${scrollSkills} 40s forwards linear infinite;
+  // animation: ${scrollSkills} 40s forwards linear infinite;
 `;
 
 interface SkillProps {
   height: string;
   width: string;
 }
-export const Skill = styled.article<SkillProps>`
+export const SkillCard = styled.article<SkillProps>`
   width: ${(_) => _.width};
   height: ${(_) => _.height};
   border: 1px solid black;
@@ -52,6 +47,29 @@ export const Skill = styled.article<SkillProps>`
   align-items: center;
   flex-direction: column;
   gap: 20px;
+  transform-style: preserve-3d; // useful for card rotation
+  transition: all 0.5s ease-in-out;
+
+  &:hover {
+    transform: rotateY(180deg);
+  }
+`;
+
+export const CardFrontFace = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  background-color: white;
+`;
+
+export const CardBackFace = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
+  background-color: white;
 `;
 
 export const SkillTitle = styled.h4`
