@@ -1,8 +1,10 @@
 import { useSkillsModel } from "./model";
 import {
   Skill,
+  SkillData,
   SkillIcon,
   SkillProficiency,
+  SkillScrollWrapper,
   SkillSectionContainer,
   SkillText,
   SkillTitle,
@@ -22,12 +24,18 @@ export const SkillsView = ({ skills }: ReturnType<typeof useSkillsModel>) => {
             {icon}
           </SkillIcon>
           <SkillTitle>{title}</SkillTitle>
-          <SkillText>{text}</SkillText>
+          <SkillData>
+            <SkillText>{text}</SkillText>
+          </SkillData>
           <SkillProficiency>{proficiencyLevel} %</SkillProficiency>
         </Skill>
       );
     }
   );
 
-  return <SkillSectionContainer>{skillsComponent}</SkillSectionContainer>;
+  return (
+    <SkillSectionContainer>
+      <SkillScrollWrapper>{skillsComponent}</SkillScrollWrapper>
+    </SkillSectionContainer>
+  );
 };

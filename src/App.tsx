@@ -27,7 +27,8 @@ function App() {
       <h1>Hello, World!</h1>
       <LanguageSwitcher />
       <CallToAction {...callToActionProps} />
-      <h1>Hi</h1>
+      <hr />
+      <h1>My Skills</h1>
       <Skills />
       <Footer />
     </ThemeProvider>
