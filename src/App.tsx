@@ -7,6 +7,7 @@ import { RootState } from "./redux/store";
 import LanguageSwitcher from "./components/LanguageSwitcher";
 import Header from "./sections/Header";
 import Footer from "./sections/Footer";
+import Skills from "./sections/Skills";
 
 function App() {
   const themeState = useSelector((state: RootState) => state.theme);
@@ -26,6 +27,8 @@ function App() {
       <h1>Hello, World!</h1>
       <LanguageSwitcher />
       <CallToAction {...callToActionProps} />
+      <h1>Hi</h1>
+      <Skills />
       <Footer />
     </ThemeProvider>
   );
