@@ -40,7 +40,7 @@ export const SkillsView = ({ skills }: ReturnType<typeof useSkillsModel>) => {
           >
             {icon}
           </SkillIcon>
-          <SkillTitle>{title}</SkillTitle>
+          {/* <SkillTitle>{title}</SkillTitle> */}
           <div className="card__data">
             <span className="card__description">{text}</span>
             <h2 className="card__title">{title}</h2>

@@ -98,6 +98,8 @@ export const SkillsList = styled.ul<SkillsListProps>`
 `;
 
 export const SkillItem = styled.li<SkillItemProps>`
+  border-radius: 1.5rem;
+  border: none;
   background-color: #0052dd;
   color: white;
   border: 1px solid black;
@@ -175,19 +177,112 @@ export const SkillProficiency = styled.p`
 `;
 
 /// TODO INFO FEATURE
+
+/// animations for test code
+const showData = keyframes({
+  "50%": {
+    transform: "translateY(-10rem);",
+  },
+  "100%": {
+    transform: "translateY(-7rem);",
+  },
+});
+
+const removeOverflow = keyframes({
+  to: {
+    overflow: "initial",
+  },
+});
+
+const removeData = keyframes({
+  "0%": {
+    transform: "translateY(7rem)",
+  },
+  "50%": {
+    transform: "translateY(10rem)",
+  },
+  "100%": {
+    transform: "translateY(0.5rem)",
+  },
+});
+
+const showOverflow = keyframes({
+  "0%": {
+    overflow: "initial",
+    pointerEvents: "none",
+  },
+  "50%": {
+    overflow: "hidden",
+  },
+});
+
+/// test code
 css`
   .container {
+    display: grid;
+    place-items: center;
+    margin-inline: 1.5rem;
+    padding-block: 5rem;
   }
   .card__container {
+    display: grid;
+    row-gap: 3.5rem;
+    border-radius: 1.5rem;
   }
   .card__article {
+    position: relative;
+    /* overflow: hidden; */
+    &:hover {
+      animation: ${removeOverflow} 2s forwards;
+    }
+    &:not(:hover) {
+      animation: ${showOverflow} 2s forwards;
+      .card__data {
+        animation: ${removeData} 1s forwards;
+      }
+    }
+
+    &:hover .card__data {
+      animation: ${showData} 1s forwards;
+      opacity: 1;
+      transition: opacity 0.3s;
+    }
   }
   .card__data {
+    /* width: 328px;
+    border-radius: 1.5rem; */
+    width: 280px;
+    max-height: 7rem;
+    background-color: white;
+    padding: 1.5rem;
+    box-shadow: 0 8px 24px hsla(0, 0%, 0%, 0.15);
+    border-radius: 1rem;
+    position: absolute;
+    bottom: -2rem;
+    left: 0;
+    right: 0;
+    margin-inline: auto;
+    opacity: 0;
+    transition: opacity 1s 1s;
   }
   .card__description {
+    display: block;
+    font-size: 20px;
   }
   .card__title {
+    font-size: 30px;
+    font-weight: 500;
+    color: black;
+    margin-bottom: 0.75rem;
   }
   .card__button {
+    text-decoration: none;
+    font-size: 26px;
+    font-weight: 500;
+    color: black;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 `;
