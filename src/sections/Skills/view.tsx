@@ -1,5 +1,9 @@
 import { useSkillsModel } from "./model";
 import {
+  CardButton,
+  CardData,
+  CardDescription,
+  CardTitle,
   SkillBackground,
   SkillData,
   SkillIcon,
@@ -41,13 +45,15 @@ export const SkillsView = ({ skills }: ReturnType<typeof useSkillsModel>) => {
             {icon}
           </SkillIcon>
           {/* <SkillTitle>{title}</SkillTitle> */}
-          <div className="card__data">
-            <span className="card__description">{text}</span>
-            <h2 className="card__title">{title}</h2>
-            <a href="#" className="card__button">
+          <CardData className="card__data">
+            <CardDescription className="card__description">
+              {text}
+            </CardDescription>
+            <CardTitle className="card__title">{title}</CardTitle>
+            <CardButton href="#" className="card__button">
               This skill interests me
-            </a>
-          </div>
+            </CardButton>
+          </CardData>
           <SkillProficiency>{proficiencyLevel} %</SkillProficiency>
         </SkillItem>
       );

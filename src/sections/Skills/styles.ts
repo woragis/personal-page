@@ -1,4 +1,4 @@
-import { css, keyframes } from "@emotion/react";
+import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
 import { SkillIconProps, SkillProps } from "../../types/Skill.section.types";
 
@@ -95,26 +95,6 @@ export const SkillsList = styled.ul<SkillsListProps>`
   width: 100%;
   min-width: calc(${(_) => _.width} * ${(_) => _.quantity});
   position: relative;
-`;
-
-export const SkillItem = styled.li<SkillItemProps>`
-  border-radius: 1.5rem;
-  border: none;
-  background-color: #0052dd;
-  color: white;
-  border: 1px solid black;
-  width: ${(_) => _.width};
-  height: ${(_) => _.height};
-  position: absolute;
-  left: 100%;
-  animation: ${autoRun} ${(_) => _.time}s linear infinite;
-  animation-delay: ${(_) =>
-    (_.time / _.quantity) * (_.position - 1) - (_.time - 3)}s !important;
-  transition: filter 0.5s;
-
-  &:hover {
-    filter: grayscale(0);
-  }
 `;
 
 // data inside each card
@@ -216,73 +196,88 @@ const showOverflow = keyframes({
   },
 });
 
-/// test code
-css`
-  .container {
-    display: grid;
-    place-items: center;
-    margin-inline: 1.5rem;
-    padding-block: 5rem;
+export const Container = styled.section`
+  display: grid;
+  place-items: center;
+  margin-inline: 1.5rem;
+  padding-block: 5rem;
+`;
+export const CardContainer = styled.div`
+  display: grid;
+  row-gap: 3.5rem;
+  border-radius: 1.5rem;
+`;
+export const CardArticle = styled.article`
+  position: relative;
+  /* overflow: hidden; */
+  &:hover {
+    animation: ${removeOverflow} 2s forwards;
   }
-  .card__container {
-    display: grid;
-    row-gap: 3.5rem;
-    border-radius: 1.5rem;
+  &:not(:hover) {
+    animation: ${showOverflow} 2s forwards;
+    .card__data {
+      animation: ${removeData} 1s forwards;
+    }
   }
-  .card__article {
-    position: relative;
-    /* overflow: hidden; */
-    &:hover {
-      animation: ${removeOverflow} 2s forwards;
-    }
-    &:not(:hover) {
-      animation: ${showOverflow} 2s forwards;
-      .card__data {
-        animation: ${removeData} 1s forwards;
-      }
-    }
 
-    &:hover .card__data {
-      animation: ${showData} 1s forwards;
-      opacity: 1;
-      transition: opacity 0.3s;
-    }
+  &:hover .card__data {
+    animation: ${showData} 1s forwards;
+    opacity: 1;
+    transition: opacity 0.3s;
   }
-  .card__data {
-    /* width: 328px;
-    border-radius: 1.5rem; */
-    width: 280px;
-    max-height: 7rem;
-    background-color: white;
-    padding: 1.5rem;
-    box-shadow: 0 8px 24px hsla(0, 0%, 0%, 0.15);
-    border-radius: 1rem;
-    position: absolute;
-    bottom: -2rem;
-    left: 0;
-    right: 0;
-    margin-inline: auto;
-    opacity: 0;
-    transition: opacity 1s 1s;
-  }
-  .card__description {
-    display: block;
-    font-size: 20px;
-  }
-  .card__title {
-    font-size: 30px;
-    font-weight: 500;
-    color: black;
-    margin-bottom: 0.75rem;
-  }
-  .card__button {
-    text-decoration: none;
-    font-size: 26px;
-    font-weight: 500;
-    color: black;
+`;
+export const SkillItem = styled.li<SkillItemProps>`
+  border-radius: 1.5rem;
+  border: none;
+  background-color: #0052dd;
+  color: white;
+  border: 1px solid black;
+  width: ${(_) => _.width};
+  height: ${(_) => _.height};
+  position: absolute;
+  left: 100%;
+  animation: ${autoRun} ${(_) => _.time}s linear infinite;
+  animation-delay: ${(_) =>
+    (_.time / _.quantity) * (_.position - 1) - (_.time - 3)}s !important;
+  transition: filter 0.5s;
 
-    &:hover {
-      text-decoration: underline;
-    }
+  &:hover {
+    filter: grayscale(0);
   }
+`;
+export const CardDescription = styled.span`
+  display: block;
+  font-size: 20px;
+`;
+
+export const CardTitle = styled.h4`
+  font-size: 30px;
+  font-weight: 500;
+  color: black;
+  margin-bottom: 0.75rem;
+`;
+export const CardButton = styled.a`
+  text-decoration: none;
+  font-size: 26px;
+  font-weight: 500;
+  color: black;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+export const CardData = styled.div`
+  width: 280px;
+  max-height: 7rem;
+  background-color: white;
+  padding: 1.5rem;
+  box-shadow: 0 8px 24px hsla(0, 0%, 0%, 0.15);
+  border-radius: 1rem;
+  position: absolute;
+  bottom: -2rem;
+  left: 0;
+  right: 0;
+  margin-inline: auto;
+  opacity: 0;
+  transition: opacity 1s 1s;
 `;
