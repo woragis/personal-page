@@ -2,21 +2,31 @@ import { useSkillsModel } from "./model";
 import {
   CardBackFace,
   CardFrontFace,
-  SkillCard,
   SkillData,
   SkillIcon,
+  SkillItem,
   SkillProficiency,
-  SkillScrollWrapper,
-  SkillSectionContainer,
+  SkillSlider,
+  SkillsList,
   SkillText,
   SkillTitle,
 } from "./styles";
 
 export const SkillsView = ({ skills }: ReturnType<typeof useSkillsModel>) => {
+  const height = "300px";
+  const width = "300px";
+  const reverse = false;
   const skillsComponent = skills.map(
-    ({ title, icon, text, proficiencyLevel }) => {
+    ({ title, icon, text, proficiencyLevel }, index: number) => {
       return (
-        <SkillCard width="330px" height="350px">
+        <SkillItem
+          className="item"
+          height={height}
+          width={width}
+          position={index}
+          time={10}
+          quantity={skills.length}
+        >
           <CardFrontFace>
             <SkillIcon
               size="60px"
@@ -34,14 +44,16 @@ export const SkillsView = ({ skills }: ReturnType<typeof useSkillsModel>) => {
             </SkillData>
             <SkillProficiency>{proficiencyLevel} %</SkillProficiency>
           </CardBackFace>
-        </SkillCard>
+        </SkillItem>
       );
     }
   );
 
   return (
-    <SkillSectionContainer>
-      <SkillScrollWrapper>{skillsComponent}</SkillScrollWrapper>
-    </SkillSectionContainer>
+    <SkillSlider className="slider" height={height} reverse={reverse}>
+      <SkillsList className="list" quantity={skills.length} width={width}>
+        {skillsComponent}
+      </SkillsList>
+    </SkillSlider>
   );
 };

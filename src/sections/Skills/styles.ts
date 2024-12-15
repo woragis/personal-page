@@ -1,4 +1,4 @@
-import { keyframes } from "@emotion/react";
+import { css, keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
 import { SkillIconProps, SkillProps } from "../../types/Skill.section.types";
 
@@ -105,4 +105,75 @@ export const SkillProficiency = styled.p`
   bottom: 30px;
   left: 50%;
   transform: translateX(-50%);
+`;
+
+const reversePlay = keyframes({
+  from: {
+    left: `calc(300px * -1)`,
+  },
+  to: {
+    left: "100%",
+  },
+});
+
+const autoRun = keyframes({
+  from: {
+    left: "100%",
+  },
+  to: {
+    left: `calc(300px * -1)`,
+  },
+});
+
+interface SkillSliderProps {
+  height: string;
+  reverse?: boolean;
+}
+export const SkillSlider = styled.section<SkillSliderProps>`
+  position: relative;
+  width: 100%;
+  height: ${(_) => _.height};
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, #000 10% 90%, transparent);
+
+  &:hover .item {
+    animation-play-state: paused !important;
+    filter: grayscale(1);
+  }
+  .item {
+    animation-direction: ${(_) => (_.reverse ? "reverse" : "normal")};
+  }
+`;
+
+interface SkillsListProps {
+  width: string;
+  quantity: number;
+}
+export const SkillsList = styled.ul<SkillsListProps>`
+  display: flex;
+  width: 100%;
+  min-width: calc(${(_) => _.width} * ${(_) => _.quantity});
+  position: relative;
+`;
+
+interface SkillItemProps {
+  width: string;
+  height: string;
+  time: number;
+  quantity: number;
+  position: number;
+}
+export const SkillItem = styled.li<SkillItemProps>`
+  width: ${(_) => _.width};
+  height: ${(_) => _.height};
+  position: absolute;
+  left: 100%;
+  animation: ${autoRun} 10s linear infinite;
+  animation-delay: ${(_) =>
+    (_.time / _.quantity) * (_.position - 1)}s !important;
+  transition: filter 0.5s;
+
+  &:hover {
+    filter: grayscale(0);
+  }
 `;
