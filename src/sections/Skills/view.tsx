@@ -5,14 +5,11 @@ import {
   CardDescription,
   CardTitle,
   SkillBackground,
-  SkillData,
   SkillIcon,
   SkillItem,
   SkillProficiency,
   SkillSlider,
   SkillsList,
-  SkillText,
-  SkillTitle,
 } from "./styles";
 
 export const SkillsView = ({ skills }: ReturnType<typeof useSkillsModel>) => {

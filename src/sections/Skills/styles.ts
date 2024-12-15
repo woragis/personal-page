@@ -1,28 +1,6 @@
 import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
-import { SkillIconProps, SkillProps } from "../../types/Skill.section.types";
-
-export const SkillScrollWrapper = styled.section`
-  padding-block: 1rem;
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 1rem;
-  width: max-content;
-`;
-
-export const SkillCard = styled.article<SkillProps>`
-  width: ${(_) => _.width};
-  height: ${(_) => _.height};
-  border: 1px solid black;
-  padding: 30px 0 50px;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 20px;
-  transition: all 0.4s ease-in-out;
-`;
+import { SkillIconProps } from "../../types/Skill.section.types";
 
 /*
 export const CardFrontFace = styled.div`
@@ -118,11 +96,6 @@ export const SkillBackground = styled.div`
   }
 `;
 
-export const SkillTitle = styled.h4`
-  font-size: 2em;
-  text-align: center;
-`;
-
 export const SkillIcon = styled.figure<SkillIconProps>`
   font-size: ${(_) => _.fontSize};
   margin: 0 auto;
@@ -135,17 +108,6 @@ export const SkillIcon = styled.figure<SkillIconProps>`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
-
-export const SkillData = styled.div``;
-
-export const SkillText = styled.p`
-  text-align: center;
-  max-width: 80%;
-  margin: 0 auto;
-  font-family: "Roboto Mono", monospace;
-  font-family: "JetBrains Mono", monospace;
-  font-optical-sizing: auto;
 `;
 
 export const SkillProficiency = styled.p`
@@ -207,27 +169,10 @@ export const CardContainer = styled.div`
   row-gap: 3.5rem;
   border-radius: 1.5rem;
 `;
-export const CardArticle = styled.article`
-  position: relative;
-  /* overflow: hidden; */
-  &:hover {
-    animation: ${removeOverflow} 2s forwards;
-  }
-  &:not(:hover) {
-    animation: ${showOverflow} 2s forwards;
-    .card__data {
-      animation: ${removeData} 1s forwards;
-    }
-  }
 
-  &:hover .card__data {
-    animation: ${showData} 1s forwards;
-    opacity: 1;
-    transition: opacity 0.3s;
-  }
-`;
 export const SkillItem = styled.li<SkillItemProps>`
   border-radius: 1.5rem;
+  overflow: hidden;
   border: none;
   background-color: #0052dd;
   color: white;
@@ -236,22 +181,41 @@ export const SkillItem = styled.li<SkillItemProps>`
   height: ${(_) => _.height};
   position: absolute;
   left: 100%;
-  animation: ${autoRun} ${(_) => _.time}s linear infinite;
+  animation: ${autoRun} ${(_) => _.time}s linear infinite !important;
   animation-delay: ${(_) =>
     (_.time / _.quantity) * (_.position - 1) - (_.time - 3)}s !important;
   transition: filter 0.5s;
 
   &:hover {
     filter: grayscale(0);
+    animation: ${removeOverflow} 2s forwards;
+    .card__data {
+      animation: ${showData} 1s forwards;
+      opacity: 1;
+      transition: opacity 0.3s;
+    }
+  }
+  &:not(:hover) {
+    animation: ${showOverflow} 2s forwards;
+    .card__data {
+      animation: ${removeData} 1s forwards;
+    }
   }
 `;
 export const CardDescription = styled.span`
   display: block;
-  font-size: 20px;
+  font-size: 15px;
+  text-align: center;
+  max-width: 80%;
+  margin: 0 auto;
+  font-family: "Roboto Mono", monospace;
+  font-family: "JetBrains Mono", monospace;
+  font-optical-sizing: auto;
 `;
 
 export const CardTitle = styled.h4`
-  font-size: 30px;
+  font-size: 2em;
+  text-align: center;
   font-weight: 500;
   color: black;
   margin-bottom: 0.75rem;
