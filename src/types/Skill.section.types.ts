@@ -14,6 +14,7 @@ export interface SkillsListProps {
 
 export interface SkillCardProps {
   position: number;
+  color: string;
 }
 
 export interface SkillIconProps {

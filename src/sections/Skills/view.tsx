@@ -22,13 +22,17 @@ export const SkillsView = ({
   timeString,
 }: ReturnType<typeof useSkillsModel>) => {
   const skillsComponent = skills.map(
-    ({ title, icon, text, proficiencyLevel }, index: number) => {
+    ({ title, icon, text, color, proficiencyLevel }, index: number) => {
       /// TODO
       /// need to refactor code
       /// I should not keep passing these variables through map
       /// these variables should be passed in the section component
       return (
-        <SkillCard className="item card__article" position={index}>
+        <SkillCard
+          className="item card__article"
+          position={index}
+          color={color}
+        >
           <SkillBackground>{icon}</SkillBackground>
           <SkillIcon
             size="60px"

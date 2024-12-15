@@ -60,7 +60,7 @@ export const SkillCard = styled.li<SkillCardProps>`
   width: var(--width);
   height: var(--height);
   border: 2px solid darkblue;
-  background: linear-gradient(315deg, darkblue, blue);
+  background: linear-gradient(115deg, #141316 60%, ${(_) => _.color});
   z-index: -1;
   color: white;
   position: absolute;
