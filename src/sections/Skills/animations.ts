@@ -48,3 +48,20 @@ export const autoRun = keyframes({
     left: `calc(300px * -1)`,
   },
 });
+
+export const animatedChargingBattery = keyframes({
+  "0%": {
+    textShadow: "none",
+  },
+  "100%": {
+    textShadow: "0 0 6px hsl(92, 90%, 68%)",
+  },
+});
+export const animatedLowBattery = keyframes({
+  "0%": {
+    textShadow: "none",
+  },
+  "100%": {
+    textShadow: "0 0 8px hsl(7, 89%, 46%)",
+  },
+});

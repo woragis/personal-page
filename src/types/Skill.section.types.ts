@@ -1,3 +1,19 @@
+import { ReactElement } from "react";
+
+export interface SkillInterface {
+  title: string;
+  icon: ReactElement;
+  text: string;
+  proficiencyLevel: number;
+  color: string;
+}
+
+export interface BatteryProps {
+  height: string;
+  width: string;
+  level: number;
+}
+
 export interface SkillsSliderProps {
   height: string;
   width: string;

@@ -7,10 +7,14 @@ import {
   SkillBackground,
   SkillIcon,
   SkillCard,
-  SkillProficiency,
+  SkillProficiencyContainer,
   SkillsSlider,
   SkillsList,
   SkillTitle,
+  BatteryPill,
+  BatteryLevel,
+  BatteryLiquid,
+  SkillProficiency,
 } from "./styles";
 
 export const SkillsView = ({
@@ -52,21 +56,19 @@ export const SkillsView = ({
               This skill interests me
             </SkillDataButton>
           </SkillData>
-          <SkillProficiency className="battery">
-            <div className="battery__card">
-              <div className="battery__data">
-                <p className="battery__text">Battery</p>
-                <h1 className="battery__percentage">20%</h1>
-                <p className="battery__status">Low Battery</p>
-              </div>
-              <div className="battery__pill">
-                <div className="battery__level">
-                  <div className="battery__liquid"></div>
-                </div>
-              </div>
-            </div>
-            {proficiencyLevel}
-          </SkillProficiency>
+          <SkillProficiencyContainer className="battery">
+            <BatteryPill
+              className="battery__pill"
+              height="160px"
+              width="20px"
+              level={1}
+            >
+              <BatteryLevel className="battery__level">
+                <BatteryLiquid className="battery__liquid"></BatteryLiquid>
+              </BatteryLevel>
+            </BatteryPill>
+            <SkillProficiency>{proficiencyLevel}</SkillProficiency>
+          </SkillProficiencyContainer>
         </SkillCard>
       );
     }

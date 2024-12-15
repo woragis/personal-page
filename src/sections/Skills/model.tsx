@@ -10,17 +10,9 @@ import {
   FaReact,
   FaRust,
 } from "react-icons/fa6";
-import { ReactElement } from "react";
+import { SkillInterface } from "../../types/Skill.section.types";
 
 export const useSkillsModel = () => {
-  interface SkillInterface {
-    title: string;
-    icon: ReactElement;
-    text: string;
-    proficiencyLevel: number;
-    color: string; // use to color icon
-  }
-
   const skills: SkillInterface[] = [
     {
       title: "HTML",
@@ -99,6 +91,54 @@ export const useSkillsModel = () => {
   const reverse = false;
   const time = 20;
   const timeString = `${time}s`;
+
+  function initBattery() {
+    const batteryLiquid = document.querySelector(".battery__liquid");
+    const batteryStatus = document.querySelector(".battery__status");
+    const batteryPercentage = document.querySelector(".battery__percentage");
+    if (batteryLiquid && batteryStatus && batteryPercentage) {
+      let proficiencyLevel = 0.5;
+      const updateBattery = () => {
+        let level = Math.floor(proficiencyLevel * 100);
+        batteryPercentage.innerHTML = level + "%";
+        batteryLiquid.setAttribute("level", `${proficiencyLevel}%`);
+        if (proficiencyLevel <= 20) {
+          // red color
+          batteryLiquid.classList.add("animated-red");
+          batteryLiquid.classList.remove(
+            "animated-orange",
+            "animated-yellow",
+            "animated-green"
+          );
+        } else if (proficiencyLevel <= 50) {
+          // orange color
+          batteryLiquid.classList.add("animated-orange");
+          batteryLiquid.classList.remove(
+            "animated-red",
+            "animated-yellow",
+            "animated-green"
+          );
+        } else if (proficiencyLevel <= 70) {
+          // yellow color
+          batteryLiquid.classList.add("animated-yellow");
+          batteryLiquid.classList.remove(
+            "animated-red",
+            "animated-orange",
+            "animated-green"
+          );
+        } else {
+          // green color
+          batteryLiquid.classList.add("animated-green");
+          batteryLiquid.classList.remove(
+            "animated-red",
+            "animated-orange",
+            "animated-yellow"
+          );
+        }
+      };
+      updateBattery();
+    }
+  }
 
   return { skills, height, width, reverse, time, timeString };
 };

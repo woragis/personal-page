@@ -4,15 +4,17 @@ import {
   SkillCardProps,
   SkillsSliderProps,
   SkillsListProps,
+  BatteryProps,
 } from "../../types/Skill.section.types";
 import {
+  animatedChargingBattery,
+  animatedLowBattery,
   autoRun,
   removeData,
   removeOverflow,
   showData,
   showOverflow,
 } from "./animations";
-import { css } from "@emotion/react";
 
 export const SkillsSlider = styled.section<SkillsSliderProps>`
   --time-delay: ${(_) => _.time - 3};
@@ -61,7 +63,8 @@ export const SkillCard = styled.li<SkillCardProps>`
   border-radius: 1.5rem;
   width: var(--width);
   height: var(--height);
-  border: 2px solid darkblue;
+  border: 2px solid var(--color);
+  box-shadow: 0 0 15px var(--color);
   background: linear-gradient(115deg, #141316 60%, var(--color));
   z-index: -1;
   color: white;
@@ -72,6 +75,16 @@ export const SkillCard = styled.li<SkillCardProps>`
   animation-delay: calc(
     (var(--time) / var(--quantity)) * (${(_) => _.position} - var(--quantity))
   ) !important;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 1.5rem;
+    box-shadow: inset 0 0 10px var(--color);
+  }
 
   &:hover {
     animation: ${removeOverflow} 1s forwards;
@@ -112,28 +125,47 @@ export const SkillBackground = styled.div`
 export const SkillIcon = styled.figure<SkillIconProps>`
   font-size: ${(_) => _.fontSize};
   margin: 0 auto;
-  color: ${(_) => _.color};
-  background-color: ${(_) => _.backgroundColor};
-  border: 2px solid var(--color);
+  color: var(--color);
+  border: 3px solid var(--color);
+  box-shadow: 0 0 5px var(--color);
   width: ${(_) => _.size};
   height: ${(_) => _.size};
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    box-shadow: inset 0 0 5px var(--color);
+  }
 `;
 
 export const SkillTitle = styled.h2`
   text-align: center;
 `;
 
-export const SkillProficiency = styled.p`
+export const SkillProficiencyContainer = styled.div`
   text-align: center;
   position: absolute;
-  bottom: 30px;
+  bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  height: 50px;
+  align-items: center;
+  flex-direction: column;
 `;
+
+export const SkillProficiency = styled.p``;
 
 export const SkillData = styled.div`
   display: flex;
@@ -189,50 +221,107 @@ export const SkillDataButton = styled.a`
     text-decoration: underline;
   }
 `;
+export const BatteryPill = styled.div<BatteryProps>`
+  --gradient-color-red: linear-gradient(
+    90deg,
+    hsl(7, 89%, 46%) 15%,
+    hsl(11, 93%, 68%) 100%
+  );
+  --gradient-color-orange: linear-gradient(
+    90deg,
+    hsl(22, 89%, 46%) 15%,
+    hsl(54, 90%, 45%) 100%
+  );
+  --gradient-color-yellow: linear-gradient(
+    90deg,
+    hsl(54, 89%, 46%) 15%,
+    hsl(92, 90%, 45%) 100%
+  );
+  --gradient-color-green: linear-gradient(
+    90deg,
+    hsl(92, 89%, 46%) 15%,
+    hsl(92, 90%, 68%) 100%
+  );
+  --text-color: #fff;
+  --battery-width: ${(_) => _.width};
+  --battery-height: ${(_) => _.height};
+  transform: rotate(90deg) translateX(-50%);
+  position: absolute;
+  left: 50%;
+  bottom: -65px;
+  z-index: -1;
+  width: var(--battery-width);
+  height: var(--battery-height);
+  background-color: black;
+  box-shadow: inset 20px 0 48px hsl(0, 0%, 16%),
+    inset -4px 12px 48px hsl(0, 0%, 56%);
+  border-radius: 3rem;
+  justify-self: flex-end;
 
-css`
-  .battery__pill {
-    --gradient-color-red: linear-gradient();
-    --gradient-color-yellow: linear-gradient();
-    --gradient-color-green: linear-gradient();
-    position: relative;
-    width: 75px;
-    height: 180px;
-    background-color: black;
-    box-shadow: inset 20px 0 48px hsl(0, 0%, 16%),
-      inset -4px 12px 48px hsl(0, 0%, 56%);
-    border-radius: 3rem;
-    justify-self: flex-end;
+  .green-color {
+    background: var(--gradient-color-green);
   }
-
-  .battery__level {
-    position: absolute;
-    inset: 2px;
-    border-radius: 3rem;
-    overflow: hidden;
+  .animated-green {
+    background: var(--gradient-color-green);
+    animation: ${animatedChargingBattery} 1.2s infinite alternate;
   }
+  .animated-red {
+    background: var(--gradient-color-red);
+    animation: ${animatedLowBattery} 1.2s infinite alternate;
+  }
+  .animated-green,
+  .animated-red,
+  .green-color {
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+  .gradient-color-red,
+  .gradient-color-red::after {
+    background: var(--gradient-color-red);
+  }
+  .gradient-color-yellow,
+  .gradient-color-yellow::after {
+    background: var(--gradient-color-yellow);
+  }
+  .gradient-color-orange,
+  .gradient-color-orange::after {
+    background: var(--gradient-color-orange);
+  }
+  .gradient-color-green,
+  .gradient-color-green::after {
+    background: var(--gradient-color-green);
+  }
+`;
 
-  .battery__liquid {
+export const BatteryLevel = styled.div`
+  position: absolute;
+  inset: 2px;
+  border-radius: 3rem;
+  overflow: hidden;
+`;
+
+export const BatteryLiquid = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: calc(var(--battery-height) / 3);
+  background: var(--gradient-color-red);
+  box-shadow: inset -10px 0 12px hsla(0, 0%, 0%, 0.1),
+    inset 12px 0 12px hsla(0, 0%, 0%, 0.15);
+  transition: 0.3s;
+
+  &::after {
+    content: "";
     position: absolute;
-    bottom: 0;
+    height: 0px;
+    background: var(--gradient-color-red);
+    box-shadow: inset 0 -3px 6px hsla(0, 0%, 0%, 0.2);
     left: 0;
     right: 0;
-    height: 36px;
-    background: var(--gradient-color-red);
-    box-shadow: inset -10px 0 12px hsla(0, 0%, 0%, 0.1),
-      inset 12px 0 12px hsla(0, 0%, 0%, 0.15);
-    transition: 0.3s;
-    &::after {
-      content: "";
-      position: absolute;
-      height: 8px;
-      background: var(--gradient-color-red);
-      box-shadow: inset 0 -3px 6px hsla(0, 0%, 0%, 0.2);
-      left: 0;
-      right: 0;
-      margin: 0 auto;
-      top: -4px;
-      border-radius: 50%;
-    }
+    margin: 0 auto;
+    top: -4px;
+    border-radius: 50%;
   }
 `;
