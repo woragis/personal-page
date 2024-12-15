@@ -12,12 +12,14 @@ import {
   SkillsList,
 } from "./styles";
 
-export const SkillsView = ({ skills }: ReturnType<typeof useSkillsModel>) => {
-  const height = "250px";
-  const width = "250px";
-  const reverse = false;
-  const time = 20;
-  const timeString = `${time}s`;
+export const SkillsView = ({
+  skills,
+  height,
+  width,
+  reverse,
+  time,
+  timeString,
+}: ReturnType<typeof useSkillsModel>) => {
   const skillsComponent = skills.map(
     ({ title, icon, text, proficiencyLevel }, index: number) => {
       /// TODO
@@ -25,12 +27,7 @@ export const SkillsView = ({ skills }: ReturnType<typeof useSkillsModel>) => {
       /// I should not keep passing these variables through map
       /// these variables should be passed in the section component
       return (
-        <SkillItem
-          className="item card__article"
-          position={index}
-          time={time}
-          quantity={skills.length}
-        >
+        <SkillItem className="item card__article" position={index}>
           <SkillBackground>{icon}</SkillBackground>
           <SkillIcon
             size="60px"

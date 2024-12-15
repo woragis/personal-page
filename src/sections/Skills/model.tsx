@@ -87,5 +87,11 @@ export const useSkillsModel = () => {
     },
   ];
 
-  return { skills };
+  const height = "250px";
+  const width = "250px";
+  const reverse = false;
+  const time = 20;
+  const timeString = `${time}s`;
+
+  return { skills, height, width, reverse, time, timeString };
 };

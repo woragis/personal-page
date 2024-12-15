@@ -45,12 +45,11 @@ interface SkillsListProps {
 }
 
 interface SkillItemProps {
-  time: number;
-  quantity: number;
   position: number;
 }
 
 export const SkillSlider = styled.section<SkillSliderProps>`
+  --time-delay: ${(_) => _.time - 3};
   --time: ${(_) => _.timeString};
   --quantity: ${(_) => _.quantity};
   border: 1px solid red;
@@ -188,9 +187,10 @@ export const CardContainer = styled.div`
 `;
 
 export const SkillItem = styled.li<SkillItemProps>`
-  animation: ${autoRun} ${(_) => _.time}s linear infinite !important;
-  animation-delay: ${(_) =>
-    (_.time / _.quantity) * (_.position - 1) - (_.time - 3)}s !important;
+  animation: ${autoRun} var(--time) linear infinite !important;
+  animation-delay: calc(
+    (var(--time) / var(--quantity)) * (${(_) => _.position} - var(--quantity))
+  ) !important;
 
   &:hover {
     animation: ${removeOverflow} 2s forwards;
