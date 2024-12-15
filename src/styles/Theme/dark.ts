@@ -39,6 +39,7 @@ export default {
     background: {
       default: "#FFFFFF", // Main background
       paper: "#F4F4F4", // Surface background (cards, modals)
+      contrast: "#141316",
     },
     text: {
       primary: "#212121", // Main text color

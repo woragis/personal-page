@@ -12,6 +12,7 @@ import {
   showData,
   showOverflow,
 } from "./animations";
+import { css } from "@emotion/react";
 
 export const SkillsSlider = styled.section<SkillsSliderProps>`
   --time-delay: ${(_) => _.time - 3};
@@ -49,6 +50,7 @@ export const SkillsList = styled.ul<SkillsListProps>`
 `;
 
 export const SkillCard = styled.li<SkillCardProps>`
+  --color: ${(_) => _.color};
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -60,7 +62,7 @@ export const SkillCard = styled.li<SkillCardProps>`
   width: var(--width);
   height: var(--height);
   border: 2px solid darkblue;
-  background: linear-gradient(115deg, #141316 60%, ${(_) => _.color});
+  background: linear-gradient(115deg, #141316 60%, var(--color));
   z-index: -1;
   color: white;
   position: absolute;
@@ -112,7 +114,7 @@ export const SkillIcon = styled.figure<SkillIconProps>`
   margin: 0 auto;
   color: ${(_) => _.color};
   background-color: ${(_) => _.backgroundColor};
-  border: 1px solid black;
+  border: 2px solid var(--color);
   width: ${(_) => _.size};
   height: ${(_) => _.size};
   border-radius: 50%;
@@ -185,5 +187,52 @@ export const SkillDataButton = styled.a`
 
   &:hover {
     text-decoration: underline;
+  }
+`;
+
+css`
+  .battery__pill {
+    --gradient-color-red: linear-gradient();
+    --gradient-color-yellow: linear-gradient();
+    --gradient-color-green: linear-gradient();
+    position: relative;
+    width: 75px;
+    height: 180px;
+    background-color: black;
+    box-shadow: inset 20px 0 48px hsl(0, 0%, 16%),
+      inset -4px 12px 48px hsl(0, 0%, 56%);
+    border-radius: 3rem;
+    justify-self: flex-end;
+  }
+
+  .battery__level {
+    position: absolute;
+    inset: 2px;
+    border-radius: 3rem;
+    overflow: hidden;
+  }
+
+  .battery__liquid {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 36px;
+    background: var(--gradient-color-red);
+    box-shadow: inset -10px 0 12px hsla(0, 0%, 0%, 0.1),
+      inset 12px 0 12px hsla(0, 0%, 0%, 0.15);
+    transition: 0.3s;
+    &::after {
+      content: "";
+      position: absolute;
+      height: 8px;
+      background: var(--gradient-color-red);
+      box-shadow: inset 0 -3px 6px hsla(0, 0%, 0%, 0.2);
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      top: -4px;
+      border-radius: 50%;
+    }
   }
 `;
