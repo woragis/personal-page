@@ -8,6 +8,7 @@ import LanguageSwitcher from "./components/LanguageSwitcher";
 import Header from "./sections/Header";
 import Footer from "./sections/Footer";
 import Skills from "./sections/Skills";
+import Hero from "./sections/Hero";
 
 function App() {
   const themeState = useSelector((state: RootState) => state.theme);
@@ -25,6 +26,7 @@ function App() {
       <Global styles={GlobalStyles} />
       <Header />
       <h1>Hello, World!</h1>
+      <Hero />
       <LanguageSwitcher />
       <CallToAction {...callToActionProps} />
       <hr />

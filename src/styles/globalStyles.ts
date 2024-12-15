@@ -7,6 +7,7 @@ export const GlobalStyles = css`
     box-sizing: border-box;
     text-decoration: none;
     list-style-type: none;
+    font-family: "Roboto", sans-serif;
   }
 
   a {
