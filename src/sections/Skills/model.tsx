@@ -87,8 +87,8 @@ export const useSkillsModel = () => {
     },
   ];
 
-  const height = "250px";
-  const width = "250px";
+  const height = "350px";
+  const width = "280px";
   const reverse = false;
   const time = 20;
   const timeString = `${time}s`;

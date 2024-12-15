@@ -1,15 +1,16 @@
 import { useSkillsModel } from "./model";
 import {
-  CardButton,
-  CardData,
-  CardDescription,
-  CardTitle,
+  SkillDataButton,
+  SkillData,
+  SkillDataDescription,
+  SkillDataTitle,
   SkillBackground,
   SkillIcon,
-  SkillItem,
+  SkillCard,
   SkillProficiency,
-  SkillSlider,
+  SkillsSlider,
   SkillsList,
+  SkillTitle,
 } from "./styles";
 
 export const SkillsView = ({
@@ -27,7 +28,7 @@ export const SkillsView = ({
       /// I should not keep passing these variables through map
       /// these variables should be passed in the section component
       return (
-        <SkillItem className="item card__article" position={index}>
+        <SkillCard className="item card__article" position={index}>
           <SkillBackground>{icon}</SkillBackground>
           <SkillIcon
             size="60px"
@@ -37,18 +38,18 @@ export const SkillsView = ({
           >
             {icon}
           </SkillIcon>
-          {/* <SkillTitle>{title}</SkillTitle> */}
-          <CardData className="card__data">
-            <CardDescription className="card__description">
+          <SkillTitle>{title}</SkillTitle>
+          <SkillData className="card__data">
+            <SkillDataDescription className="card__description">
               {text}
-            </CardDescription>
-            <CardTitle className="card__title">{title}</CardTitle>
-            <CardButton href="#" className="card__button">
+            </SkillDataDescription>
+            <SkillDataTitle className="card__title">{title}</SkillDataTitle>
+            <SkillDataButton href="#" className="card__button">
               This skill interests me
-            </CardButton>
-          </CardData>
+            </SkillDataButton>
+          </SkillData>
           <SkillProficiency>{proficiencyLevel} %</SkillProficiency>
-        </SkillItem>
+        </SkillCard>
       );
     }
   );
@@ -60,7 +61,7 @@ export const SkillsView = ({
   /// backend: node,golang,rust,java
   /// utils: docker,linux,git,typing speed
   return (
-    <SkillSlider
+    <SkillsSlider
       className="slider container"
       height={height}
       reverse={reverse}
@@ -76,6 +77,6 @@ export const SkillsView = ({
       >
         {skillsComponent}
       </SkillsList>
-    </SkillSlider>
+    </SkillsSlider>
   );
 };
