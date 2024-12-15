@@ -17,6 +17,7 @@ export const SkillsView = ({ skills }: ReturnType<typeof useSkillsModel>) => {
   const width = "250px";
   const reverse = false;
   const time = 20;
+  const timeString = `${time}s`;
   const skillsComponent = skills.map(
     ({ title, icon, text, proficiencyLevel }, index: number) => {
       /// TODO
@@ -26,8 +27,6 @@ export const SkillsView = ({ skills }: ReturnType<typeof useSkillsModel>) => {
       return (
         <SkillItem
           className="item card__article"
-          height={height}
-          width={width}
           position={index}
           time={time}
           quantity={skills.length}
@@ -64,7 +63,15 @@ export const SkillsView = ({ skills }: ReturnType<typeof useSkillsModel>) => {
   /// backend: node,golang,rust,java
   /// utils: docker,linux,git,typing speed
   return (
-    <SkillSlider className="slider container" height={height} reverse={reverse}>
+    <SkillSlider
+      className="slider container"
+      height={height}
+      reverse={reverse}
+      width={width}
+      time={time}
+      quantity={skills.length}
+      timeString={timeString}
+    >
       <SkillsList
         className="list card__container"
         quantity={skills.length}

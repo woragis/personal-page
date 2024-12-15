@@ -32,6 +32,10 @@ const autoRun = keyframes({
 
 interface SkillSliderProps {
   height: string;
+  width: string;
+  time: number;
+  timeString: string;
+  quantity: number;
   reverse?: boolean;
 }
 
@@ -41,14 +45,14 @@ interface SkillsListProps {
 }
 
 interface SkillItemProps {
-  width: string;
-  height: string;
   time: number;
   quantity: number;
   position: number;
 }
 
 export const SkillSlider = styled.section<SkillSliderProps>`
+  --time: ${(_) => _.timeString};
+  --quantity: ${(_) => _.quantity};
   border: 1px solid red;
   position: relative;
   width: 100%;
@@ -56,11 +60,24 @@ export const SkillSlider = styled.section<SkillSliderProps>`
   overflow: hidden;
   mask-image: linear-gradient(to right, transparent, #000 10% 90%, transparent);
 
+  .item {
+    width: ${(_) => _.width};
+    height: ${(_) => _.height};
+    border-radius: 1.5rem;
+    overflow: hidden;
+    border: none;
+    background-color: #0052dd;
+    color: white;
+    border: 1px solid black;
+    position: absolute;
+    left: 100%;
+    transition: filter 0.5s;
+  }
   &:hover .item {
     animation-play-state: paused !important;
     filter: grayscale(1);
   }
-  & .item {
+  & .item:hover {
     filter: grayscale(0);
   }
   .item {
@@ -86,8 +103,8 @@ export const SkillBackground = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: -1;
-  filter: blur(4px);
+  z-index: 0 !important;
+  filter: blur(4px) !important;
 
   svg {
     position: absolute;
@@ -171,23 +188,11 @@ export const CardContainer = styled.div`
 `;
 
 export const SkillItem = styled.li<SkillItemProps>`
-  border-radius: 1.5rem;
-  overflow: hidden;
-  border: none;
-  background-color: #0052dd;
-  color: white;
-  border: 1px solid black;
-  width: ${(_) => _.width};
-  height: ${(_) => _.height};
-  position: absolute;
-  left: 100%;
   animation: ${autoRun} ${(_) => _.time}s linear infinite !important;
   animation-delay: ${(_) =>
     (_.time / _.quantity) * (_.position - 1) - (_.time - 3)}s !important;
-  transition: filter 0.5s;
 
   &:hover {
-    filter: grayscale(0);
     animation: ${removeOverflow} 2s forwards;
     .card__data {
       animation: ${showData} 1s forwards;
@@ -202,6 +207,7 @@ export const SkillItem = styled.li<SkillItemProps>`
     }
   }
 `;
+
 export const CardDescription = styled.span`
   display: block;
   font-size: 15px;
@@ -220,6 +226,7 @@ export const CardTitle = styled.h4`
   color: black;
   margin-bottom: 0.75rem;
 `;
+
 export const CardButton = styled.a`
   text-decoration: none;
   font-size: 26px;
@@ -230,6 +237,7 @@ export const CardButton = styled.a`
     text-decoration: underline;
   }
 `;
+
 export const CardData = styled.div`
   width: 280px;
   max-height: 7rem;
