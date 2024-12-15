@@ -44,3 +44,13 @@ ao usuario escolher urgente e importante o email automaticamente ganha o titulo 
 ao usuario escolher urgente e nao importante o email vai ficar [urgent] me empresta dinheiro
 ao usuario escolher importante e nao urgente o email vai ficar [important] I love you
 ao usuario escolher nao importante nem urgente o email vai ficar [] good website man (i dont care)
+
+#### Typing Section
+
+Here in this section I will talk about my typing speed
+and show some gif of some super fast dude typing
+
+#### What I like Section
+
+Here I will talk about anime and manga that I like
+Talk about instruments like piano, guitar and electric guitar too

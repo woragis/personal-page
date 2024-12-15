@@ -3,6 +3,7 @@ import {
   FaGit,
   FaGolang,
   FaHtml5,
+  FaJava,
   FaJs,
   FaLinux,
   FaNodeJs,
@@ -17,6 +18,10 @@ export const useSkillsModel = () => {
     icon: ReactElement;
     text: string;
     proficiencyLevel: number;
+    mainColor?: string; // use to color icon
+
+    // para essa segunda cor eu posso simplesmente usar o darken na cor primaria
+    secondaryColor?: string; // use to color or shade background icon
   }
 
   const skills: SkillInterface[] = [
@@ -71,6 +76,12 @@ export const useSkillsModel = () => {
     {
       title: "LINUX",
       icon: <FaLinux />,
+      text: "",
+      proficiencyLevel: 100,
+    },
+    {
+      title: "JAVA",
+      icon: <FaJava />,
       text: "",
       proficiencyLevel: 100,
     },
