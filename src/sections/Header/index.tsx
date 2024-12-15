@@ -1,11 +1,10 @@
-import Navbar from "../../components/Navbar";
+import { useHeaderModel } from "./model";
+import { HeaderView } from "./view";
 
 const Header = () => {
-  return (
-    <div>
-      <Navbar />
-    </div>
-  );
+  const model = useHeaderModel();
+
+  return <HeaderView {...model} />;
 };
 
 export default Header;
