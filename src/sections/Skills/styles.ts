@@ -1,5 +1,6 @@
 import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
+import { SkillIconProps, SkillProps } from "../../types/Skill.section.types";
 
 export const SkillSectionContainer = styled.section`
   overflow: hidden;
@@ -7,8 +8,8 @@ export const SkillSectionContainer = styled.section`
   -webkit-mask: linear-gradient(
     90deg,
     transparent,
-    white 20%,
-    white 80%,
+    white 10%,
+    white 90%,
     transparent
   );
 
@@ -32,10 +33,6 @@ export const SkillScrollWrapper = styled.section`
   // animation: ${scrollSkills} 40s forwards linear infinite;
 `;
 
-interface SkillProps {
-  height: string;
-  width: string;
-}
 export const SkillCard = styled.article<SkillProps>`
   width: ${(_) => _.width};
   height: ${(_) => _.height};
@@ -48,7 +45,7 @@ export const SkillCard = styled.article<SkillProps>`
   flex-direction: column;
   gap: 20px;
   transform-style: preserve-3d; // useful for card rotation
-  transition: all 0.5s ease-in-out;
+  transition: all 0.4s ease-in-out;
 
   &:hover {
     transform: rotateY(180deg);
@@ -77,13 +74,6 @@ export const SkillTitle = styled.h4`
   text-align: center;
 `;
 
-interface SkillIconProps {
-  size: string;
-  color: string;
-  backgroundColor: string;
-  fontSize: string;
-}
-
 export const SkillIcon = styled.figure<SkillIconProps>`
   font-size: ${(_) => _.fontSize};
   margin: 0 auto;
@@ -104,6 +94,9 @@ export const SkillText = styled.p`
   text-align: center;
   max-width: 80%;
   margin: 0 auto;
+  font-family: "Roboto Mono", monospace;
+  font-family: "JetBrains Mono", monospace;
+  font-optical-sizing: auto;
 `;
 
 export const SkillProficiency = styled.p`
