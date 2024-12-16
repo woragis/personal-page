@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { useNavbarModel } from "./model";
 import {
+  NavbarLogo,
   NavLink,
   NavLinkItem,
   NavLinksContainer,
@@ -8,7 +9,10 @@ import {
 } from "./styles";
 import { RootState } from "../../redux/store";
 
-export const NavbarView = ({ navLinks }: ReturnType<typeof useNavbarModel>) => {
+export const NavbarView = ({
+  navLinks,
+  navLogo,
+}: ReturnType<typeof useNavbarModel>) => {
   const theme = useSelector((state: RootState) => state.theme.theme);
 
   const navigationLinks = navLinks.map(({ title, path }) => {
@@ -21,8 +25,16 @@ export const NavbarView = ({ navLinks }: ReturnType<typeof useNavbarModel>) => {
     );
   });
 
+  window.addEventListener("scroll", () => {
+    let header = document.querySelector(".navbar");
+    header?.classList.toggle("sticky", window.scrollY > 0);
+  });
   return (
-    <StyledNavbar backgroundColor={theme.colors.secondary.light}>
+    <StyledNavbar
+      backgroundColor={theme.colors.secondary.light}
+      className="navbar"
+    >
+      <NavbarLogo src={navLogo} />
       <NavLinksContainer>{navigationLinks}</NavLinksContainer>
     </StyledNavbar>
   );

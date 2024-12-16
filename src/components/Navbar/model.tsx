@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import navLogo from "../../assets/lamborghini.svg";
 
 export const useNavbarModel = () => {
   interface NavLinksInterface {
@@ -13,5 +14,5 @@ export const useNavbarModel = () => {
     { title: t("contact"), path: "/contact" },
   ];
 
-  return { navLinks };
+  return { navLinks, navLogo };
 };
