@@ -1,5 +1,11 @@
 import { Link } from "react-router-dom";
 import { useFooterModel } from "./model";
+import {
+  ContactSection,
+  FooterCopyright,
+  SocialMedia,
+  StyledFooterSection,
+} from "./styles";
 
 export const FooterView = ({
   footerText,
@@ -7,25 +13,40 @@ export const FooterView = ({
   socialMediaLinks,
 }: ReturnType<typeof useFooterModel>) => {
   const websiteLinksComponent = websiteLinks.map(({ title, path }) => {
-    return <Link to={path}>{title}</Link>;
+    return (
+      <li>
+        <Link to={path}>{title}</Link>
+      </li>
+    );
   });
   const socialMediaLinksComponent = socialMediaLinks.map(
-    ({ title, href, icon }) => {
+    ({ title, path, icon }) => {
       return (
-        <div>
-          <Link to={href}>
+        <li>
+          <Link to={path}>
             {icon} {title}
           </Link>
-        </div>
+        </li>
       );
     }
   );
 
   return (
-    <div>
+    <StyledFooterSection>
       <div>{footerText}</div>
-      <div>{websiteLinksComponent}</div>
-      <div>{socialMediaLinksComponent}</div>
-    </div>
+
+      <SocialMedia>{websiteLinksComponent}</SocialMedia>
+      <SocialMedia>{socialMediaLinksComponent}</SocialMedia>
+      <FooterCopyright>
+        All Rights reserved to woragis - 2024 &copy;
+      </FooterCopyright>
+      <ContactSection>
+        <form method="post">
+          <input type="text" placeholder="Titulo da Mensagem" />
+          <textarea placeholder="Corpo da mensagem"></textarea>
+          <button>Enviar</button>
+        </form>
+      </ContactSection>
+    </StyledFooterSection>
   );
 };

@@ -15,7 +15,13 @@ export const StyledNavbar = styled.nav<NavbarProps>`
   align-items: center;
   flex-direction: row;
   height: 100px;
-  background-color: ${(_) => _.backgroundColor};
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0);
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
 `;
 
 export const NavbarLogo = styled.img`

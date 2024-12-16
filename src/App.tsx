@@ -25,7 +25,6 @@ function App() {
     <ThemeProvider theme={themeState.theme}>
       <Global styles={GlobalStyles} />
       <Header />
-      <h1>Hello, World!</h1>
       <Hero />
       <LanguageSwitcher />
       <CallToAction {...callToActionProps} />

@@ -1,11 +1,28 @@
 import { useHeroModel } from "./model";
-import { NameTitle } from "./styles";
+import {
+  HeroBackgroundImage,
+  HeroContainer,
+  HeroContent,
+  HeroImage,
+  HeroImageContainer,
+  HeroTextContainer,
+  NameTitle,
+} from "./styles";
 
-export const HeroView = ({}: ReturnType<typeof useHeroModel>) => {
+export const HeroView = ({
+  heroBackgroundImage,
+}: ReturnType<typeof useHeroModel>) => {
   return (
-    <div>
-      HeroView
-      <NameTitle>Jezreel de Andrade</NameTitle>
-    </div>
+    <HeroContainer>
+      <HeroBackgroundImage src={heroBackgroundImage} />
+      <HeroContent>
+        <HeroTextContainer>
+          <NameTitle>Jezreel de Andrade</NameTitle>
+        </HeroTextContainer>
+        <HeroImageContainer>
+          <HeroImage />
+        </HeroImageContainer>
+      </HeroContent>
+    </HeroContainer>
   );
 };
