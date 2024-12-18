@@ -17,7 +17,7 @@ export const HeroBackgroundImage = styled.img`
   height: 100%;
   object-fit: cover;
   z-index: -1;
-  filter: blur(2px) brightness(0.2);
+  filter: brightness(0.2);
 `;
 
 export const HeroContent = styled.div`
@@ -25,9 +25,10 @@ export const HeroContent = styled.div`
   grid-template-columns: repeat(2, 1fr);
   justify-items: center;
   align-content: center;
-  gap: 50px;
-  min-height: 300px;
-  border: 1px solid lime;
+  column-gap: clamp(50px, 8vw, 100px);
+  width: clamp(300px, 80vw, 1200px);
+  margin-top: 90px;
+  height: clamp(200px, 90vh, 1200px);
 `;
 
 export const HeroTextContainer = styled.article`
@@ -36,17 +37,20 @@ export const HeroTextContainer = styled.article`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  width: 100%;
 `;
 
 export const HeroImageContainer = styled.article`
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  height: clamp(200px, 70vh, 500px);
 `;
 
 export const HeroImage = styled.img`
-  height: 100px;
-  width: 100px;
+  height: 100%;
+  width: 100%;
 `;
 
 export const NameTitle = styled.h1`
