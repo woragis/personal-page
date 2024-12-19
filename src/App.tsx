@@ -4,7 +4,6 @@ import { GlobalStyles } from "./styles/globalStyles";
 import { CallToActionProps } from "./types/CallToAction.types";
 import { useSelector } from "react-redux";
 import { RootState } from "./redux/store";
-import LanguageSwitcher from "./components/LanguageSwitcher";
 import Header from "./sections/Header";
 import Footer from "./sections/Footer";
 import Skills from "./sections/Skills";
