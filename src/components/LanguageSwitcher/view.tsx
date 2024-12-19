@@ -1,4 +1,10 @@
 import { useLanguageSwitcherModel } from "./model";
+import {
+  Language,
+  LanguageButton,
+  LanguagesContainer,
+  LanguageSwitcherContainer,
+} from "./styles";
 
 export const LanguageSwitcherView = ({
   t,
@@ -6,14 +12,17 @@ export const LanguageSwitcherView = ({
   languages,
 }: ReturnType<typeof useLanguageSwitcherModel>) => {
   const languagesComponent = languages.map(({ code, label }) => {
-    return <button onClick={() => changeLanguage(code)}>{label}</button>;
+    return (
+      <LanguageButton onClick={() => changeLanguage(code)}>
+        {label}
+      </LanguageButton>
+    );
   });
 
   return (
-    <div>
-      <p>{t("greeting")}</p>
-      <p>{t("changeLanguage")}</p>
-      {languagesComponent}
-    </div>
+    <LanguageSwitcherContainer>
+      <Language>{t("changeLanguage")}</Language>
+      <LanguagesContainer>{languagesComponent}</LanguagesContainer>
+    </LanguageSwitcherContainer>
   );
 };

@@ -10,8 +10,11 @@ interface NavbarProps {
 }
 
 export const StyledNavbar = styled.nav<NavbarProps>`
+  --padding-vertical: 40px;
+  --padding-horizontal: 50px;
   &.sticky {
-    padding: 5px 10px;
+    --padding-vertical: 5px;
+    padding: var(--padding-vertical) var(--padding-horizontal);
     background-color: white;
     a {
       color: #000;
@@ -27,7 +30,7 @@ export const StyledNavbar = styled.nav<NavbarProps>`
   justify-content: space-between;
   align-items: center;
   transition: 600ms;
-  padding: 40px 10px;
+  padding: var(--padding-vertical) var(--padding-horizontal);
 `;
 
 export const NavbarLogo = styled.img`
@@ -63,13 +66,4 @@ export const NavLink = styled(Link)<NavLinkProps>`
   letter-spacing: 2px;
   font-weight: 500;
   transition: 600ms;
-`;
-
-// hero banner
-export const Banner = styled.div`
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  // background: url();
-  background-size: cover;
 `;

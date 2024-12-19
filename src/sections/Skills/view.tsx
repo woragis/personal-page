@@ -28,6 +28,7 @@ export const SkillsView = ({
   const skillsComponent = skills.map(
     ({ title, icon, text, color, proficiencyLevel }, index: number) => {
       /// TODO
+      /// decrease size and separate backend, frontend and utils skills
       /// need to refactor code
       /// I should not keep passing these variables through map
       /// these variables should be passed in the section component

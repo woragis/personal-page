@@ -26,11 +26,10 @@ function App() {
       <Global styles={GlobalStyles} />
       <Header />
       <Hero />
-      <LanguageSwitcher />
-      <CallToAction {...callToActionProps} />
       <hr />
       <h1>My Skills</h1>
       <Skills />
+      <CallToAction {...callToActionProps} />
       <Footer />
     </ThemeProvider>
   );

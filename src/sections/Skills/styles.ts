@@ -22,7 +22,6 @@ export const SkillsSlider = styled.section<SkillsSliderProps>`
   --quantity: ${(_) => _.quantity};
   --width: ${(_) => _.width};
   --height: ${(_) => _.height};
-  border: 1px solid red;
   position: relative;
   width: 100%;
   height: ${(_) => _.height};

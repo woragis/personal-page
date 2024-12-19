@@ -8,6 +8,7 @@ import {
   StyledNavbar,
 } from "./styles";
 import { RootState } from "../../redux/store";
+import LanguageSwitcher from "../LanguageSwitcher";
 
 export const NavbarView = ({
   navLinks,
@@ -35,7 +36,10 @@ export const NavbarView = ({
       className="navbar"
     >
       <NavbarLogo src={navLogo} />
-      <NavLinksContainer>{navigationLinks}</NavLinksContainer>
+      <NavLinksContainer>
+        {navigationLinks}
+        <LanguageSwitcher />
+      </NavLinksContainer>
     </StyledNavbar>
   );
 };
