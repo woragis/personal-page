@@ -5,7 +5,7 @@ import { CallToActionProps } from "./types/CallToAction.types";
 import { useSelector } from "react-redux";
 import { RootState } from "./redux/store";
 import Header from "./sections/Header";
-import Footer from "./sections/Footer";
+import Footer from "./components/Footer";
 import Skills from "./sections/Skills";
 import Hero from "./sections/Hero";
 
